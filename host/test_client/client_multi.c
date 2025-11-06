@@ -342,19 +342,14 @@ static void *worker_thread(void *arg) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
-        fprintf(stderr, "Usage: %s <num_conns> <requests_per_conn> <keep_alive: 0|1>\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Usage: %s <requests_per_conn> <keep_alive: 0|1>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
-    int num_conns = atoi(argv[1]);
-    int requests_per_conn = atoi(argv[2]);
-    int use_keep_alive = atoi(argv[3]);
-
-    if (num_conns <= 0 || requests_per_conn <= 0) {
-        fprintf(stderr, "Invalid arguments.\n");
-        return 1;
-    }
+    int requests_per_conn = atoi(argv[1]);
+    int use_keep_alive = atoi(argv[1]);
+    int num_conns = 1; // 현재는 단일 연결만 지원
 
     char log_file_path[64];
     time_t now = time(NULL);
@@ -368,8 +363,8 @@ int main(int argc, char *argv[]) {
 
     pthread_mutex_t log_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-    pthread_t *threads = (pthread_t *)calloc((size_t)num_conns, sizeof(pthread_t));
-    thread_arg_t *args = (thread_arg_t *)calloc((size_t)num_conns, sizeof(thread_arg_t));
+    pthread_t *threads = (pthread_t *)calloc(1, sizeof(pthread_t));
+    thread_arg_t *args = (thread_arg_t *)calloc(1, sizeof(thread_arg_t));
     if (!threads || !args) perror_exit("calloc");
 
     for (int i = 0; i < num_conns; ++i) {
