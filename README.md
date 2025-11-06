@@ -29,7 +29,7 @@ sudo apt-get install libibverbs-dev librdmacm-dev
 
 ### 2. 리포지토리 클론
 ```bash
-git clone [https://github.com/DaEun2Lee/socket_to_rdma.git](https://github.com/DaEun2Lee/socket_to_rdma.git)
+git clone https://github.com/DaEun2Lee/socket_to_rdma.git
 cd socket_to_rdma
 ```
 
