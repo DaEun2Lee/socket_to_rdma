@@ -74,11 +74,6 @@ LD_PRELOAD를 사용하여 실행하면, 프로그램의 출력은 동일하지�
 [ ] 성능 벤치마크 및 최적화
 [ ] 예외 처리 및 오류 복구 로직 강화
 
-# Authors
-
-## Author of the original code:
-	Animesh Trivedi
-	atrivedi@apache.org
-## Author: 
+# Author:
 	Daeun Lee
 	delee0929@gmail.com
